@@ -10,5 +10,20 @@ import Foundation
 
 final class UserModel {
     
+    var name: String
+    var email: String
+    var fullAddres: String
+    var city: String
+    var state: String
+    var country: String
+    
+    init(name: String, email: String, fullAddres: String, city: String, state: String, country: String) {
+        self.name = name
+        self.email = email
+        self.fullAddres = fullAddres
+        self.city = city
+        self.state = state
+        self.country = country
+    }
     
 }
