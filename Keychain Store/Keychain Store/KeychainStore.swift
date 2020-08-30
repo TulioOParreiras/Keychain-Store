@@ -21,7 +21,7 @@ final class KeychainStore {
     }
     
     private static var serviceName: String {
-        Bundle.main.bundleIdentifier ?? "SwiftKeychainWrapper"
+        Bundle.main.bundleIdentifier ?? "KeychainStore"
     }
     
     static func save(data: Data, forKey key: String, completion: @escaping (Result) -> Void) {
