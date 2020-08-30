@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    let userModel = UserModel()
+    var userModel = UserModel()
     
     lazy var textFields: [UITextField] = {
        return [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry]
@@ -44,9 +44,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initUserModel()
         self.setupUI()
     }
 
+    private func initUserModel() {
+        KeychainStore.loadData(forKey: String(describing: UserModel.self)) { result in
+            switch result {
+            case let .success(data):
+                print("Success load data: ", data)
+            case .failure:
+                print("Failed to load ", String(describing: UserModel.self), " from keychain")
+            }
+        }
+    }
 
 }
 
