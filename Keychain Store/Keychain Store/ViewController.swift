@@ -52,7 +52,17 @@ private extension ViewController {
             $0?.layer.borderWidth = 1
             $0?.layer.borderColor = $0?.tintColor.cgColor
         }
+        [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry].forEach {
+            $0.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        }
+    }
+    
+    // MARK: - General Methods
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        #warning("ToDo: Update model here")
     }
     
 }
+
 
