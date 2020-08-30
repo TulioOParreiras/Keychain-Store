@@ -48,30 +48,6 @@ class ViewController: UIViewController {
         self.setupUI()
     }
 
-    private func initUserModel() {
-        KeychainStore.loadData(forKey: String(describing: UserModel.self)) { result in
-            switch result {
-            case let .success(data):
-                self.decodeUserModel(fromData: data)
-            case .failure:
-                print("Failed to load ", String(describing: UserModel.self), " from keychain")
-            }
-        }
-    }
-    
-    private func decodeUserModel(fromData data: Data) {
-        do {
-            let userModel = try JSONDecoder().decode(UserModel.self, from: data)
-            self.updateUserModel(with: userModel)
-        } catch {
-            print("Failed to decode", String(describing: UserModel.self), " with error: ", error)
-        }
-    }
-    
-    private func updateUserModel(with userModel: UserModel) {
-        self.userModel = userModel
-    }
-
 }
 
 private extension ViewController {
@@ -87,6 +63,54 @@ private extension ViewController {
         self.textFields.forEach {
             $0.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
             $0.delegate = self
+        }
+    }
+    
+    // MARK: - Keychain
+
+    func initUserModel() {
+        KeychainStore.loadData(forKey: String(describing: UserModel.self)) { result in
+            switch result {
+            case let .success(data):
+                self.decodeUserModel(fromData: data)
+            case .failure:
+                print("Failed to load ", String(describing: UserModel.self), " from keychain")
+            }
+        }
+    }
+    
+    func decodeUserModel(fromData data: Data) {
+        do {
+            let userModel = try JSONDecoder().decode(UserModel.self, from: data)
+            self.updateUserModel(with: userModel)
+        } catch {
+            print("Failed to decode", String(describing: UserModel.self), " with error: ", error)
+        }
+    }
+    
+    func updateUserModel(with userModel: UserModel) {
+        self.userModel = userModel
+        self.textFieldName.text = userModel.name
+        self.textFieldEmail.text = userModel.email
+        self.textFieldFullAddress.text = userModel.fullAddres
+        self.textFieldCity.text = userModel.city
+        self.textFieldState.text = userModel.state
+        self.textFieldCountry.text = userModel.country
+    }
+    
+    func saveUserModel() {
+        do {
+            let data = try JSONEncoder().encode(self.userModel)
+            KeychainStore.save(data: data, forKey: String(describing: UserModel.self)) { result in
+                switch result {
+                case .success:
+                    print("Saved successfully")
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
         }
     }
     
@@ -108,22 +132,6 @@ private extension ViewController {
         case self.textFieldCountry:
             self.userModel.name = text
         default: break
-        }
-    }
-    
-    func saveUserModel() {
-        do {
-            let data = try JSONEncoder().encode(self.userModel)
-            KeychainStore.save(data: data, forKey: String(describing: UserModel.self)) { result in
-                switch result {
-                case .success:
-                    print("Saved successfully")
-                case let .failure(error):
-                    print(error)
-                }
-            }
-        } catch {
-            print(error)
         }
     }
     
