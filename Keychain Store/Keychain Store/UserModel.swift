@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class UserModel: Encodable {
+final class UserModel: Encodable, Decodable {
     
     var name: String?
     var email: String?
