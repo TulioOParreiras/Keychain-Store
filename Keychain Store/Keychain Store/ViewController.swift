@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonSaveAction(_ sender: UIButton) {
-        
+        self.saveUserModel()
     }
     
     // MARK: - Properties
@@ -87,6 +87,23 @@ private extension ViewController {
         }
     }
     
+    func saveUserModel() {
+        do {
+            let data = try JSONEncoder().encode(self.userModel)
+            KeychainStore.save(data: data, forKey: String(describing: UserModel.self)) { result in
+                switch result {
+                case .success:
+                    print("Saved successfully")
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -96,6 +113,7 @@ extension ViewController: UITextFieldDelegate {
         switch index {
         case textFields.count - 1:
             textField.resignFirstResponder()
+            self.saveUserModel()
         default:
             textFields[index + 1].becomeFirstResponder()
         }
