@@ -59,6 +59,17 @@ final class KeychainStore {
         }
     }
     
+    static func deleteCache(forKey key: String, completion: @escaping (Result) -> Void) {
+        let query = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: self.serviceName
+        ] as CFDictionary
+        
+        let status: OSStatus = SecItemDelete(query)
+        
+        completion(status == errSecSuccess ? .success(()) : .failure(KeychainStoreError.unexpectedError))
+    }
+    
     private static func createBaseQueryDicionary(forKey key: String) -> [String: Any?] {
         let encodedKey = key.data(using: .utf8)
         return [
