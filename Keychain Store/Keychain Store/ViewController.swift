@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
+    let userModel = UserModel()
+    
     lazy var textFields: [UITextField] = {
        return [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry]
     }()

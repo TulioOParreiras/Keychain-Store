@@ -26,4 +26,8 @@ final class UserModel {
         self.country = country
     }
     
+    convenience init() {
+        self.init(name: "", email: "", fullAddres: "", city: "", state: "", country: "")
+    }
+    
 }
