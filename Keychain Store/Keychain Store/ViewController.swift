@@ -69,7 +69,22 @@ private extension ViewController {
     // MARK: - General Methods
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        #warning("ToDo: Update model here")
+        let text = textField.text ?? ""
+        switch textField {
+        case self.textFieldName:
+            self.userModel.name = text
+        case self.textFieldEmail:
+            self.userModel.name = text
+        case self.textFieldFullAddress:
+            self.userModel.name = text
+        case self.textFieldCity:
+            self.userModel.name = text
+        case self.textFieldState:
+            self.userModel.state = text
+        case self.textFieldCountry:
+            self.userModel.name = text
+        default: break
+        }
     }
     
 }
