@@ -54,10 +54,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YY1-eF-Qv0">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="44"/>
                                                 <state key="normal" title="Clear"/>
+                                                <connections>
+                                                    <action selector="buttonClearAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oII-6W-7is"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYb-Mg-inB">
                                                 <rect key="frame" x="136" y="0.0" width="120" height="44"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="buttonSaveAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qTy-iW-Buo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -78,6 +84,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonClear" destination="YY1-eF-Qv0" id="IDp-Cb-v29"/>
+                        <outlet property="buttonSave" destination="hYb-Mg-inB" id="CP6-b2-ZKd"/>
+                        <outlet property="textFieldCity" destination="gr5-Kn-cSD" id="QPo-sW-RDR"/>
+                        <outlet property="textFieldCountry" destination="3bP-jI-vfu" id="5N2-V3-5zU"/>
+                        <outlet property="textFieldEmail" destination="LAE-u7-u9U" id="lKS-wz-ack"/>
+                        <outlet property="textFieldFullAddress" destination="dbV-cr-0gJ" id="udf-pG-gUA"/>
+                        <outlet property="textFieldName" destination="mSC-Iy-KHe" id="adV-kH-Ydr"/>
+                        <outlet property="textFieldState" destination="iwK-D6-9eI" id="Tnu-xP-KWQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
