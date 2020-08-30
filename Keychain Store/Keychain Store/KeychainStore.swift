@@ -34,7 +34,7 @@ final class KeychainStore {
         if status == errSecSuccess {
             completion(.success(()))
         } else if status == errSecDuplicateItem {
-            completion(.failure(KeychainStoreError.duplicatedItem))
+            self.update(data, forKey: key, completion: completion)
         } else if let error = result?.error, let _error = error {
             completion(.failure(_error))
         } else {
@@ -57,6 +57,15 @@ final class KeychainStore {
         } else {
             completion(.failure(KeychainStoreError.unexpectedError))
         }
+    }
+    
+    static func update(_ data: Data, forKey key: String, completion: @escaping (Result) -> Void) {
+        let query = self.createBaseQueryDicionary(forKey: key) as CFDictionary
+        let updateDictionary = [kSecValueData as String: data] as CFDictionary
+        
+        let status: OSStatus = SecItemUpdate(query, updateDictionary)
+        
+        completion(status == errSecSuccess ? .success(()) : .failure(KeychainStoreError.unexpectedError))
     }
     
     static func deleteCache(forKey key: String, completion: @escaping (Result) -> Void) {
