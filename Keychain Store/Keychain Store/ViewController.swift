@@ -36,8 +36,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
     }
 
 
+}
+
+private extension ViewController {
+    
+    // MARK: - Setup UI
+    
+    func setupUI() {
+        [self.buttonClear, self.buttonSave].forEach {
+            $0?.layer.cornerRadius = 6
+            $0?.layer.borderWidth = 1
+            $0?.layer.borderColor = $0?.tintColor.cgColor
+        }
+    }
+    
 }
 
