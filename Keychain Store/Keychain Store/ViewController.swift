@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.initUserModel()
         self.setupUI()
+        
     }
 
 }
