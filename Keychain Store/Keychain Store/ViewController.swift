@@ -118,10 +118,10 @@ private extension ViewController {
         KeychainStore.deleteCache(forKey: String(describing: UserModel.self)) { result in
             switch result {
             case .success:
-            self.textFields.forEach { $0.text = nil }
-            self.userModel = .init()
+                self.textFields.forEach { $0.text = nil }
+                self.userModel = .init()
             case let .failure(error):
-                print("Failed to remove ", String(describing: UserModel.self), " from Keychain")
+                print("Failed to remove ", String(describing: UserModel.self), " from Keychain with error: ", error)
             }
         }
     }
