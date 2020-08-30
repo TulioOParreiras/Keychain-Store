@@ -10,6 +10,8 @@ import Foundation
 
 final class KeychainStore {
     
+    private init() { }
+    
     enum KeychainStoreError: Error {
         case duplicatedItem
         case unexpectedError
