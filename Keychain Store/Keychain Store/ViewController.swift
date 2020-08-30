@@ -32,6 +32,12 @@ class ViewController: UIViewController {
         
     }
     
+    // MARK: - Properties
+    
+    lazy var textFields: [UITextField] = {
+       return [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry]
+    }()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -52,8 +58,9 @@ private extension ViewController {
             $0?.layer.borderWidth = 1
             $0?.layer.borderColor = $0?.tintColor.cgColor
         }
-        [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry].forEach {
+        self.textFields.forEach {
             $0.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+            $0.delegate = self
         }
     }
     
@@ -65,4 +72,17 @@ private extension ViewController {
     
 }
 
-
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let index = self.textFields.firstIndex(where: { $0 == textField }) else { return true }
+        switch index {
+        case textFields.count - 1:
+            textField.resignFirstResponder()
+        default:
+            textFields[index + 1].becomeFirstResponder()
+        }
+        return true
+    }
+    
+}
