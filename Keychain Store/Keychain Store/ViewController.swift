@@ -104,9 +104,9 @@ private extension ViewController {
             KeychainStore.save(data: data, forKey: self.userModelKey) { result in
                 switch result {
                 case .success:
-                    print("Saved successfully")
+                    print("Saved ", self.userModelKey, " successfully")
                 case let .failure(error):
-                    print(error)
+                    print("Failed to save ", self.userModelKey, " with error: ", error)
                 }
             }
         } catch {
