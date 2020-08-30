@@ -34,9 +34,9 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    var userModel = UserModel()
-    
-    lazy var textFields: [UITextField] = {
+    private var userModel = UserModel()
+    private let userModelKey: String = String(describing: UserModel.self)
+    private lazy var textFields: [UITextField] = {
        return [self.textFieldName, self.textFieldEmail, self.textFieldFullAddress, self.textFieldCity, self.textFieldState, self.textFieldCountry]
     }()
     
@@ -69,12 +69,12 @@ private extension ViewController {
     // MARK: - Keychain
 
     func initUserModel() {
-        KeychainStore.loadData(forKey: String(describing: UserModel.self)) { result in
+        KeychainStore.loadData(forKey: self.userModelKey) { result in
             switch result {
             case let .success(data):
                 self.decodeUserModel(fromData: data)
             case .failure:
-                print("Failed to load ", String(describing: UserModel.self), " from keychain")
+                print("Failed to load ", self.userModelKey, " from keychain")
             }
         }
     }
@@ -84,7 +84,7 @@ private extension ViewController {
             let userModel = try JSONDecoder().decode(UserModel.self, from: data)
             self.updateUserModel(with: userModel)
         } catch {
-            print("Failed to decode", String(describing: UserModel.self), " with error: ", error)
+            print("Failed to decode", self.userModelKey, " with error: ", error)
         }
     }
     
@@ -101,7 +101,7 @@ private extension ViewController {
     func saveUserModel() {
         do {
             let data = try JSONEncoder().encode(self.userModel)
-            KeychainStore.save(data: data, forKey: String(describing: UserModel.self)) { result in
+            KeychainStore.save(data: data, forKey: self.userModelKey) { result in
                 switch result {
                 case .success:
                     print("Saved successfully")
@@ -115,13 +115,13 @@ private extension ViewController {
     }
     
     func clearUserData() {
-        KeychainStore.deleteCache(forKey: String(describing: UserModel.self)) { result in
+        KeychainStore.deleteCache(forKey: self.userModelKey) { result in
             switch result {
             case .success:
                 self.textFields.forEach { $0.text = nil }
                 self.userModel = .init()
             case let .failure(error):
-                print("Failed to remove ", String(describing: UserModel.self), " from Keychain with error: ", error)
+                print("Failed to remove ", self.userModelKey, " from Keychain with error: ", error)
             }
         }
     }
