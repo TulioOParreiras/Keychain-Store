@@ -134,15 +134,15 @@ private extension ViewController {
         case self.textFieldName:
             self.userModel.name = text
         case self.textFieldEmail:
-            self.userModel.name = text
+            self.userModel.email = text
         case self.textFieldFullAddress:
-            self.userModel.name = text
+            self.userModel.fullAddres = text
         case self.textFieldCity:
-            self.userModel.name = text
+            self.userModel.city = text
         case self.textFieldState:
             self.userModel.state = text
         case self.textFieldCountry:
-            self.userModel.name = text
+            self.userModel.country = text
         default: break
         }
     }
