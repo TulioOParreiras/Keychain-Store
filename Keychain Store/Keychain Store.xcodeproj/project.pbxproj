@@ -15,6 +15,7 @@
 		FCED14FA24FBF5D1006C7358 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCED14F824FBF5D1006C7358 /* LaunchScreen.storyboard */; };
 		FCED150524FBF5D1006C7358 /* Keychain_StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED150424FBF5D1006C7358 /* Keychain_StoreTests.swift */; };
 		FCED151024FBF5D1006C7358 /* Keychain_StoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED150F24FBF5D1006C7358 /* Keychain_StoreUITests.swift */; };
+		FCED151E24FBFDB5006C7358 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED151D24FBFDB5006C7358 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		FCED150B24FBF5D1006C7358 /* Keychain StoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Keychain StoreUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCED150F24FBF5D1006C7358 /* Keychain_StoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain_StoreUITests.swift; sourceTree = "<group>"; };
 		FCED151124FBF5D1006C7358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCED151D24FBFDB5006C7358 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				FCED14ED24FBF5CF006C7358 /* AppDelegate.swift */,
 				FCED14EF24FBF5CF006C7358 /* SceneDelegate.swift */,
 				FCED14F124FBF5CF006C7358 /* ViewController.swift */,
+				FCED151D24FBFDB5006C7358 /* UserModel.swift */,
 				FCED14F324FBF5CF006C7358 /* Main.storyboard */,
 				FCED14F624FBF5D1006C7358 /* Assets.xcassets */,
 				FCED14F824FBF5D1006C7358 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				FCED14F224FBF5CF006C7358 /* ViewController.swift in Sources */,
 				FCED14EE24FBF5CF006C7358 /* AppDelegate.swift in Sources */,
+				FCED151E24FBFDB5006C7358 /* UserModel.swift in Sources */,
 				FCED14F024FBF5CF006C7358 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
