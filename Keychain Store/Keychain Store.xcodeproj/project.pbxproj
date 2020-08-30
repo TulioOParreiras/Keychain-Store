@@ -16,6 +16,7 @@
 		FCED150524FBF5D1006C7358 /* Keychain_StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED150424FBF5D1006C7358 /* Keychain_StoreTests.swift */; };
 		FCED151024FBF5D1006C7358 /* Keychain_StoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED150F24FBF5D1006C7358 /* Keychain_StoreUITests.swift */; };
 		FCED151E24FBFDB5006C7358 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED151D24FBFDB5006C7358 /* UserModel.swift */; };
+		FCED152024FBFF4C006C7358 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED151F24FBFF4C006C7358 /* KeychainStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		FCED150F24FBF5D1006C7358 /* Keychain_StoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain_StoreUITests.swift; sourceTree = "<group>"; };
 		FCED151124FBF5D1006C7358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCED151D24FBFDB5006C7358 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		FCED151F24FBFF4C006C7358 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				FCED14ED24FBF5CF006C7358 /* AppDelegate.swift */,
 				FCED14EF24FBF5CF006C7358 /* SceneDelegate.swift */,
 				FCED14F124FBF5CF006C7358 /* ViewController.swift */,
+				FCED151F24FBFF4C006C7358 /* KeychainStore.swift */,
 				FCED151D24FBFDB5006C7358 /* UserModel.swift */,
 				FCED14F324FBF5CF006C7358 /* Main.storyboard */,
 				FCED14F624FBF5D1006C7358 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 				FCED14EE24FBF5CF006C7358 /* AppDelegate.swift in Sources */,
 				FCED151E24FBFDB5006C7358 /* UserModel.swift in Sources */,
 				FCED14F024FBF5CF006C7358 /* SceneDelegate.swift in Sources */,
+				FCED152024FBFF4C006C7358 /* KeychainStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
