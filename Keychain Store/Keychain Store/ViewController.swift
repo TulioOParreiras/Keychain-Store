@@ -52,11 +52,24 @@ class ViewController: UIViewController {
         KeychainStore.loadData(forKey: String(describing: UserModel.self)) { result in
             switch result {
             case let .success(data):
-                print("Success load data: ", data)
+                self.decodeUserModel(fromData: data)
             case .failure:
                 print("Failed to load ", String(describing: UserModel.self), " from keychain")
             }
         }
+    }
+    
+    private func decodeUserModel(fromData data: Data) {
+        do {
+            let userModel = try JSONDecoder().decode(UserModel.self, from: data)
+            self.updateUserModel(with: userModel)
+        } catch {
+            print("Failed to decode", String(describing: UserModel.self), " with error: ", error)
+        }
+    }
+    
+    private func updateUserModel(with userModel: UserModel) {
+        self.userModel = userModel
     }
 
 }
